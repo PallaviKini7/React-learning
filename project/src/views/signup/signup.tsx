@@ -1,14 +1,20 @@
 import React, { useState } from 'react'
 import Button from '../../component/button/button'
 import '../signup/signup.css'
+import { Link, useNavigate } from 'react-router-dom'
 
 function Signup() {
   const [pswrd, setPswrd] = useState(true)
+  const [tab, setTab] = useState(1)
 
   function togglepswrd() {
       setPswrd(!pswrd)
 
   }
+  function toggleTab(id: number) {
+    setTab(id)
+}
+
   console.log("this is the value of pswrd", pswrd);
 
   return (
@@ -21,16 +27,21 @@ function Signup() {
           <div className='smalline'> </div>
           <div className='signup-right-rectangle'>
               <form className='form'>
-                  <div className='heading'>SIGN UP</div>
+                  <div className='sup-heading'>SIGN UP</div>
                   <div className='heading2'>
                     
-                       <div className='hd1'>SIGN IN</div>
-                  <div className='hd2'>SIGN UP</div>
+                       <div className='hd1'><Link to='/' className='link'>SIGN IN</Link></div>
+                  {/* <div className='shd2'>SIGN UP</div> */}
+                  <div className={tab == 1 ? 'underline' : ''} onClick={() => toggleTab(1)}>
+                                <Link to='/' className='link'>SIGN UP</Link>
+                            {/* <div className='hd1'>SIGN IN</div> */}
+                        </div>
+                  {/* <div className='underline2'></div> */}
                
                       </div>
                   <div className='box'><input type="text" placeholder='Enter Mobile Number' className='input'/></div>
                   <div className='box1'><input type="password" placeholder='Enter 4 digit MPin' className='input'/></div>
-                  <div className='psswrd'>
+                  <div className='psswrd1'>
                  
                       {
                           pswrd?
