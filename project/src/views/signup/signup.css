@@ -58,7 +58,7 @@
 
 .form {
   /* height: 387px; */
-  /* width: 110%; */
+  width: 110%;
 
 
 }
@@ -119,8 +119,21 @@
 
 .btn {
   margin-top: 45px;
-}
 
+}
+.button
+{
+  background-color: #FFFFFF;
+  color: #0E85FF;
+  outline: none;
+  font-size: 16px;
+  font-weight: 400;
+  border-radius: 5%;
+  border: none;
+  float: left;
+  width: 80px;
+  height: 40px;
+}
 .forgot {
 
   color: #FFFFFF;
@@ -144,7 +157,7 @@
   line-height: 19px;
   text-align: left;
   width: 100%;
-  margin-top: 50px;
+  margin-top: 98px;
 }
 
 .eye {

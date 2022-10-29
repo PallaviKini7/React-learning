@@ -1,0 +1,27 @@
+.horizontal {
+    height: 114px;
+    width: 1440px;
+    background-color:#F5F7FB;
+    justify-content: center;
+
+}
+.smallhorizontal
+{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: 71px;
+  
+    top: 22%;
+}
+.passlogo
+{
+    justify-content: center;
+    position: absolute;
+    left: 10%;
+}
+.small-images
+{
+    position: absolute;
+    right: 6%;
+}

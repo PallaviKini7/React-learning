@@ -4,16 +4,31 @@ import './App.css';
 import Login from './views/login/login';
 import Signup from './views/signup/signup';
 import { Routes, Route } from "react-router-dom"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Home from './views/home/home';
+
 
 function App() {
+
   return (
     <div className="App">
-      <Routes>
+      {/* <Routes>
         <Route path='/' element={<Login />} />
         <Route path='/Signup' element={<Signup />} />
-      </Routes>
+     
+      </Routes> */}
+       <ToastContainer  
+          position= "top-center"
+            autoClose= {10000}
+            hideProgressBar= {false}
+            closeOnClick= {false}
+            pauseOnHover
+            draggable
+            theme= "light"/>
       {/* <Login /> */}
       {/* <Signup /> */}
+      <Home/>
      
     </div>
   );
