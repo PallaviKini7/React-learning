@@ -1,3 +1,16 @@
+ /* body{
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: brown;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  
+  
+} */
+
 .container {
 
   width: 833px;
@@ -8,9 +21,7 @@
   margin: 10px;
 
 }
-body{
-  justify-content: center;
-}
+
 
 .left-rectangle {
   width: 334px;
@@ -19,6 +30,7 @@ body{
   text-align: center;
 
 }
+
 
 .logoimg {
   margin-top: 60px;
@@ -191,11 +203,19 @@ body{
   text-decoration: none;
 
 }
+.base-container
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
 
 .underline {
 
   border-bottom: solid 3px #FFA222;
 }
+
 
 @media only screen and (max-width: 600px) {
   .container {

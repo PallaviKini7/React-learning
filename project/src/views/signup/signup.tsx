@@ -90,6 +90,7 @@ function Signup() {
   console.log("this is the value of pswrd", pswrd);
 
   return (
+    <div className='base-container'>
       <div className='container'>
           <div className='left-rectangle'>
               <img src={require("../../asset/Image/logo.png")} alt="" className='logoimg'/>
@@ -141,6 +142,7 @@ function Signup() {
           
 
       </div >
+      </div>
   )
 }
 

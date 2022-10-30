@@ -1,27 +1,38 @@
-.site-container{
+.site-container {
     height: 115px;
     width: 363px;
-    background-color: red;
+
     border-radius: 14px;
-  /* background-color: #FFFFFF; */
-  box-shadow: 0 8px 18px 10px rgba(0,0,0,0.02);
-  padding: 15px;
+    background-color: #FFFFFF;
+    box-shadow: 0 8px 18px 10px rgba(0, 0, 0, 0.02);
+    padding: 15px;
 }
-.top-site{
+
+.top-site {
     display: flex;
     justify-content: space-between;
     height: 75px;
-  width: 363px;
+    width: 363px;
 }
-.logo{
+
+.logo {
     height: 50px;
     width: 50px;
-    background-color: aqua;
+   
 }
-.top-site-r{
+
+.top-site-r {
     display: flex;
     flex-direction: column;
+    position: relative;
+    right: 50px;
+    color: #0E85FF;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0;
+
 }
+
 .wrapContainer {
     display: flex;
     flex-direction: row;
@@ -29,4 +40,13 @@
     gap: 16px;
     position: relative;
     margin-top: 7rem;
-  }
+}
+.copy-pass
+{    /* height: 30px; */
+    font-size: 16px;
+    padding: 2px;
+}
+.site-url
+{
+    text-align: center;
+}

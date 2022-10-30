@@ -69,16 +69,20 @@ const Card = (props: any) => {
                 <div className="site-container">
 
                   <div className="top-site">
-                    <div className="logo"> <img src={require("../../asset/Image/add_btn.png")} alt="" /> </div>
+                    <div className="logo"> <img src={require(`../../asset/Image/${user.siteName}.png`)} alt="" /> </div>
                     <div className="top-site-r">
                                   
                       <div className="site-name">{user.siteName}</div>
-                      <div className="copy-pass" ></div>
+                      <div className="copy-pass" >
+                        <img src={require('../../asset/Image/copy.png')} alt="" />
+                        Copy Password
+                      </div>
 
                     </div>
 
                    
                   </div>
+                  <div className="site-url">www.{user.siteName}.com</div>
                 </div>
               </div>
             );

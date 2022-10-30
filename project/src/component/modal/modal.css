@@ -92,9 +92,20 @@
   }
   .e-button
   {
-    background-color: white;
-    color:#0e85ff;
+    background-color: #0e85ff;
+    color: white;
     border: 1px solid;
     outline: none;
-    font-weight: 800;
+    font-weight: 600;
+    /* height: 40px; */
+    font-size: 16px;
+    padding: 10px;
+  }
+  .btnSubmit
+  {
+    background-color: white;
+    color: blue;
+    height: 30px;
+    width: 50px;
+    outline: none;
   }

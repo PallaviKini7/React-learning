@@ -22,29 +22,29 @@ const Header = () => {
         <div className="head">
           <div className="passManager">
             <img
-              // src={require("../../assets/icons/burger_Menu.png")}
+              src={require("../../asset/Image/burger_menu.png")}
               alt="icon"
               className="iconsImg"
             />
             <img
-              // src={require("../../assets/icons/PASS MANAGER.png")}
+              src={require("../../asset/Image/PASS MANAGER.png")}
               alt="icon"
               className="iconsImg"
             />
           </div>
           <div className="profileMobile">
             <img
-              // src={require("../../assets/icons/search (2).png")}
+              src={require("../../asset/Image/search (2).png")}
               alt="icon"
               className="iconsImg"
             />
             <img
-              // src={require("../../assets/icons/sync_icn.png")}
+              src={require("../../asset/Image/sync_icn.png")}
               alt="icon"
               className="iconsImg"
             />
             <img
-              // src={require("../../assets/icons/profile (2).png")}
+              src={require("../../asset/Image/profile (2).png")}
               alt="icon"
               className="iconsImg"
             />

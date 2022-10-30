@@ -11,7 +11,10 @@
     /* transition: all 0.5s ease; */
     z-index: 2;
   }
-  
+  /* body{
+    background-color: aquamarine;
+  }
+   */
   .socialMediaMobile,
   .mobileHeader,
   .addButton {
@@ -35,6 +38,7 @@
     .socialMediaMobile,
     .mobileHeader {
       display: block;
+      background-color: #2892FF;
     }
   
     .dashBoardContainer {
@@ -85,9 +89,13 @@
     }
   
     .addButton {
-      display: block;
-      bottom: 1rem;
-      right: 1rem;
+        display: block;
+        bottom: 1rem;
+        /* right: 19rem; */
+        /* position: relative; */
+        position: absolute;
+        left: 342px;
+        top: 533px;
     }
   
     .modalContent {

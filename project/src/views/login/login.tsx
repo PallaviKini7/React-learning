@@ -66,6 +66,7 @@ function Login() {
     }
  
     return (
+        <div className='base-container'>
         <div className='container'>
             <div className='left-rectangle'>
                 <img src={require("../../asset/Image/logo.png")} alt="" className='logoimg' />
@@ -118,6 +119,7 @@ function Login() {
 
 
         </div >
+          </div>
 
     )
 }

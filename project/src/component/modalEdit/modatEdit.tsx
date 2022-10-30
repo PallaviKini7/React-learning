@@ -154,22 +154,8 @@ const ModalEdit = (props: any) => {
               ) : (
                 ""
               )}
-              {/* {!edit ? (
-                <div>
-                  {" "}
-                  <button
-                    className="modalButtons button2 "
-                    onClick={() => setEdit(true)}
-                  >
-                    Edit
-                  </button>
-                </div>
-              ) : (
-                ""
-              )} */}
-
               {edit ? (
-                <input type="submit" value="save" className="btnSubmit" />
+                <input type="submit" value="save" className="btnSubmit"/>
               ) : (
                 ""
               )}
