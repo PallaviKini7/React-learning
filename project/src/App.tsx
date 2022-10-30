@@ -13,11 +13,12 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Routes>
+      <Routes>
         <Route path='/' element={<Login />} />
         <Route path='/Signup' element={<Signup />} />
+        <Route path='/Home' element={<Home />} />
      
-      </Routes> */}
+      </Routes>
        <ToastContainer  
           position= "top-center"
             autoClose= {10000}
@@ -28,7 +29,7 @@ function App() {
             theme= "light"/>
       {/* <Login /> */}
       {/* <Signup /> */}
-      <Home/>
+      {/* <Home/> */}
      
     </div>
   );

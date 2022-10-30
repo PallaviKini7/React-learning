@@ -1,0 +1,32 @@
+.site-container{
+    height: 115px;
+    width: 363px;
+    background-color: red;
+    border-radius: 14px;
+  /* background-color: #FFFFFF; */
+  box-shadow: 0 8px 18px 10px rgba(0,0,0,0.02);
+  padding: 15px;
+}
+.top-site{
+    display: flex;
+    justify-content: space-between;
+    height: 75px;
+  width: 363px;
+}
+.logo{
+    height: 50px;
+    width: 50px;
+    background-color: aqua;
+}
+.top-site-r{
+    display: flex;
+    flex-direction: column;
+}
+.wrapContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16px;
+    position: relative;
+    margin-top: 7rem;
+  }

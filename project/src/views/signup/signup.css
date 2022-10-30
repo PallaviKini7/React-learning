@@ -48,8 +48,6 @@
 
 .signup-right-rectangle {
   width: 440px;
-  height: inherit;
-
   text-align: center;
   padding: 60px;
   justify-content: center;
@@ -238,6 +236,9 @@
 
   .heading2 {
     display: flex;
+  }
+  .signup-right-rectangle{
+    width: auto;
   }
 
 }

@@ -1,28 +1,25 @@
-.block {
-    height: 1024px;
-    width: 120px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #2892FF;
+.logoBurger {
+    padding: 2rem;
+    margin-bottom: 1rem;
 }
 
-.burger {
-    top: 53px;
+.homeIcn {
+    padding: 2rem;
+    border-left: 6px solid orange;
+}
+
+.round {
     position: absolute;
+    width: 14px;
+    height: 15px;
+    background-color: orange;
+    border-radius: 50%;
+    top: 10rem;
+    left: 6.5rem;
+}
+
+.brger {
     height: 22px;
     width: 40px;
-}
-.brimg
-{
-    top: 7%;
-    
-    left: 14%;
-}
-.home
-{
-    top: 141px;
-    position: absolute;
-    height: 39px;
-    width: 40px;
+
 }

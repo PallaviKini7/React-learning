@@ -1,22 +1,27 @@
 import React from 'react'
 import Header from '../../component/header/header'
 import Sidebar from '../../component/sidebar/sidebar'
+import Sites from '../../component/sites/sites'
 import '../home/home.css'
 
-function Home() {
+const Home = () => {
   return (
-    <div className='main-box'>
-     
-     
-      <Sidebar/>
-      <Header/>
-      <div className='box-rect'>
-        {/* <div className='sites'>Sites</div> */}
+    <div>
+      <div className="dashBoardContainer">
+        <div className="sideBarMenu">
+          <Sidebar />
+        </div>
+
+        <div className="dashBoardHeader">
+         <Header/>
+        </div>
+
+        <div className="dashBoardSites">
+          <Sites/>
+          
+        </div>
       </div>
     </div>
-   
-    
-
   )
 }
 
