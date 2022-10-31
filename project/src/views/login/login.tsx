@@ -9,54 +9,34 @@ function Login() {
     const [pswrd, setPswrd] = useState(true)
     const navigate = useNavigate();
 
-    //local storage
-    if (localStorage.getItem('users') === null) {
-        localStorage.setItem(
-            'user Data',
-            JSON.stringify(
-                localStorage.setItem(
-                    'users',
-                    JSON.stringify([
-                        { mobileNo: '9036825554', mPin: '9036' },
-                    ])
-                )
-            )
-        );
-    }
-    const loginHandler = (e: any) => {
-      e.preventDefault();
-      type usersType = { mobileNo: number; mPin: number };
-      console.log(e.target);
-    
-    
-      const mobileNo = e.target.mobileNo.value;
-      const mPin = e.target.mPin.value;
-    
-      const userData = { mobileNo, mPin };
-      console.log('userData', userData);
-    
-      const users: usersType[] = JSON.parse(
-          localStorage.getItem('users') || '[]'
-      );
-      console.log('users', users);
-    
-      for (let i = 0; i < users.length; i++) {
-          if (userData.mobileNo === users[i].mobileNo) {
-              if (userData.mPin === users[i].mPin) {
-                  localStorage.setItem('auth', 'authenticated');
-                  
-                  navigate('/Home');
-                  localStorage.setItem('currentUser', mobileNo);
-                //   window.location.reload();
-                toast.success('Congrats!!Login succesful')
-              }
-          }
-      }
+    const submitHandler = (e: any) => {
+        e.preventDefault();
+
+        const mobile = e.target.mobile.value;
+        const mPin = e.target.mPin.value;
+
+        const newArr: any[] = [];
+        const userData = JSON.parse(localStorage.getItem("users") || "[]");
+        userData.map((user: any) => {
+            
+            
+            if (mobile === user.mobile && mPin === user.mPin) {
+                newArr.push("exists");
+            }
+        });
+        if (newArr.includes("exists")) {
+            localStorage.setItem("currentUser", JSON.stringify([mobile]));
+           
+            toast.success("Congrats!!Success")
+            navigate("/Home");
+        } else {
+            toast("please signUp to Login...");
+        }
     };
 
-   
+
     const [tab, setTab] = useState(1)
-    
+
     function togglepswrd() {
         setPswrd(!pswrd)
 
@@ -64,62 +44,68 @@ function Login() {
     function toggleTab(id: number) {
         setTab(id)
     }
- 
+
     return (
         <div className='base-container'>
-        <div className='container'>
-            <div className='left-rectangle'>
-                <img src={require("../../asset/Image/logo.png")} alt="" className='logoimg' />
-                <img src={require("../../asset/Image/paalogo.png")} alt="" className='paalogo' />
-                <div className='text'>Project & Manage every password in your business</div>
-            </div>
-            <div className='smalline'> </div>
-            <div className='right-rectangle'>
-                <form className='form' onSubmit={loginHandler}>
-                    <div className='heading'>SIGN IN TO YOUR ACCOUNT</div>
-                    <div className='heading2'>
+            <div className='container'>
+                <div className='left-rectangle'>
+                    <img src={require("../../asset/Image/logo.png")} alt="" className='logoimg' />
+                    <img src={require("../../asset/Image/paalogo.png")} alt="" className='paalogo' />
+                    <div className='text'>Project & Manage every password in your business</div>
+                </div>
+                <div className='smalline'> </div>
+                <div className='right-rectangle'>
+                    <form className='form' onSubmit={submitHandler}>
+                        <div className='heading'>SIGN IN TO YOUR ACCOUNT</div>
+                        <div className='heading2'>
 
-                        <div className={tab == 1 ? 'underline' : ''} onClick={() => toggleTab(1)}>
+                            <div className={tab == 1 ? 'underline' : ''} onClick={() => toggleTab(1)}>
                                 <Link to='/' className='link'>SIGNIN</Link>
-                            {/* <div className='hd1'>SIGN IN</div> */}
-                        </div>
-                        {/* <div className={tab == 2 ? 'underline' : ''} onClick={() => toggleTab(2)}>
+                                {/* <div className='hd1'>SIGN IN</div> */}
+                            </div>
+                            {/* <div className={tab == 2 ? 'underline' : ''} onClick={() => toggleTab(2)}>
                             <div className='hd1'>SIGN IN</div> */}
                             <div className='hd2'>
                                 <Link to='/Signup' className='link'>SIGNUP</Link>
                                 {/* SIGN UP */}
                             </div>
-                        {/* </div> */}
-                    </div>
-                    <div className='box'><input type="text" placeholder='Mobile Number' name='mobileNo' className='input' required /></div>
-                    <div className='psswrd'>
+                            {/* </div> */}
+                        </div>
+                        <div className='box'><input type="text" placeholder='Mobile Number' name='mobile' className='input' required
+                            minLength={10}
+                            maxLength={10} /></div>
+                        <div className='psswrd'>
 
-                        {
-                            pswrd ?
-                                <>
-                                    <input type="password" placeholder='MPin' className='input' required name='mPin'  />
-                                    <img src={require("../../asset/Image/hide-icon.jpg")} alt="" className='hide-eye' onClick={togglepswrd} />
-                                </>
-                                :
-                                <>
-                                    <input type="text" placeholder='MPin' className='input' required name='mPin' />
-                                    <img src={require("../../asset/Image/eye_on.png")} alt="" className='eye' onClick={togglepswrd} />
-                                </>
+                            {
+                                pswrd ?
+                                    <>
+                                        <input type="password" placeholder='MPin' className='input' required name='mPin'
+                                            minLength={4}
+                                            maxLength={4} />
+                                        <img src={require("../../asset/Image/hide-icon.jpg")} alt="" className='hide-eye' onClick={togglepswrd} />
+                                    </>
+                                    :
+                                    <>
+                                        <input type="text" placeholder='MPin' className='input' name='mPin' required
+                                            minLength={4}
+                                            maxLength={4} />
+                                        <img src={require("../../asset/Image/eye_on.png")} alt="" className='eye' onClick={togglepswrd} />
+                                    </>
 
-                        }
-                    </div>
+                            }
+                        </div>
 
-                    <div className='forgot'>Forgot your password?</div>
-                    <div className='btn'>
-                    <button className='sin-button' type='submit' >SIGN IN</button>
-                    </div>
-                    <div className='dnthave'>Don't have a Account?<Link to='/Signup' className='link'>SIGNUP</Link></div>
-                </form>
-            </div>
+                        <div className='forgot'>Forgot your password?</div>
+                        <div className='btn'>
+                            <button className='sin-button' type='submit' >SIGN IN</button>
+                        </div>
+                        <div className='dnthave'>Don't have a Account?<Link to='/Signup' className='link'>SIGNUP</Link></div>
+                    </form>
+                </div>
 
 
-        </div >
-          </div>
+            </div >
+        </div>
 
     )
 }

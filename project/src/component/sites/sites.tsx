@@ -26,6 +26,9 @@ const Sites = () => {
     <div>
       <div className="siteContainer">
         <div className="marginContainer">
+          <img src={require("../../asset/Image/add_btn.png")} alt="" className='add-btn-mobile' onClick={() => {
+            setModal(true);
+          }} />
           <div className="sites">Sites</div>
           <div className="searchBar">
             <div className="search">
@@ -52,7 +55,14 @@ const Sites = () => {
               />
             </div>
           </div>
+          
         </div>
+        <div className="media">Social Media
+        <div className="mediaCount">
+                  {siteData.length < 10
+                    ? `0${siteData.length}`
+                    : siteData.length}
+                </div></div>
         {JSON.stringify(siteData) === "[]" ? (
           <div className="center">
             <div className="addSiteContainer">
@@ -63,16 +73,16 @@ const Sites = () => {
           </div>
         ) : (
           <div>
-            <div className="socialMediaDesktop">
-              <div className="socialMedia">
-                <div className="media">Social Media</div>
-                <div className="mediaCount">
+            {/* <div className="socialMediaDesktop"> */}
+              {/* <div className="socialMedia"> */}
+                {/* <div className="media">Social Media</div> */}
+                {/* <div className="mediaCount">
                   {siteData.length < 10
                     ? `0${siteData.length}`
                     : siteData.length}
-                </div>
-              </div>
-            </div>
+                </div> */}
+              {/* </div> */}
+            {/* </div> */}
 
             <div className="socialMediaMobile">
               <div className="socialMedia">

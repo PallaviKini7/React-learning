@@ -6,144 +6,142 @@ import { ToastContainer, toast } from 'react-toastify';
 // import 'react-toastify/dist/ReactToastify.css';
 
 function Signup() {
-  const [pswrd, setPswrd] = useState(true)
-  const [tab, setTab] = useState(1)
+    const [pswrd, setPswrd] = useState(true)
+    const [tab, setTab] = useState(1)
 
-  type usersType = { mobileNo: number; mPin: number };
-  const navigate = useNavigate();
+    //   type usersType = { mobileNo: number; mPin: number };
+    const navigate = useNavigate();
 
-  if (localStorage.getItem('users') === null) {
-      localStorage.setItem(
-          'user Data',
-          JSON.stringify(
-              localStorage.setItem(
-                  'users',
-                  JSON.stringify([
-                      { mobileNo: '7204975671', mPin: '9036' },
-                  ])
-              )
-          )
-      );
-  }
-  const signUpHandler = (e: any) => {
-    e.preventDefault();
+    const storeUsers = localStorage.getItem("users") || "[]";
 
-    const mobileNo: number = e.target.mobileNo.value;
-    const newMPin: number = e.target.mpin.value;
-    const confirmMpin: number = e.target.confirmMPin.value;
+    console.log("storeUsers", storeUsers);
 
-    const userData = { mobileNo, mPin: newMPin };
+    const signUpHandler = (event: any) => {
+        event.preventDefault();
 
-    const previousData: usersType[] = JSON.parse(
-        localStorage.getItem('users') || '[]'
-    );
+        const mobile = event.target.mobile.value;
+        const pin = event.target.pin.value;
+        const mPin = event.target.mPin.value;
 
-    console.log('userData', previousData);
-    console.log('userData', { mobileNo, newMPin });
-    if (previousData.length > 0 && mobileNo) {
-        const mappedUser = previousData.map((user) => {
-            if (user.mobileNo === mobileNo) {
-                return 'user';
+        const userData = {
+            mobile,
+            pin,
+            mPin,
+        };
+
+        const previousData = JSON.parse(localStorage.getItem("users") || "[]");
+
+        const arr: any[] = [];
+
+        previousData.map((user: any) => {
+            if (userData.mobile === user.mobile) {
+                arr.push("exist");
             }
-           
-            return 'no user';
         });
+        // if(mobile.maxLength<0)
+        // {
+        //     toast("number is short")
+        // }
 
-        if (newMPin === confirmMpin) {
-            if (mappedUser.includes('user')) {
-                toast('user already exist');
-            } else if (mappedUser.includes('no user')) {
-                previousData.push(userData);
-                sessionStorage.setItem('signUpSuccess', 'true');
-                navigate('/');
-
-                localStorage.setItem(JSON.stringify(mobileNo), '[]');
-                window.location.reload();
-            }
+        if (arr.includes("exist")) {
+            toast("user already exist");
         } else {
-            toast('MPin does not match');
+            if (mobile === "" && pin === "" && mPin === "") {
+                alert("Enter all fields");
+            } else {
+                if (pin === mPin) {
+                    previousData.push(userData);
+                    localStorage.setItem("users", JSON.stringify(previousData));
+                    localStorage.setItem(JSON.stringify(mobile), JSON.stringify([]));
+                    navigate("/");
+                } else {
+                    toast("Enter same pins");
+                }
+            }
         }
+    };
 
-        console.log('pre', previousData);
-        localStorage.setItem('users', JSON.stringify(previousData));
-    } else if ((previousData.length = 0 && mobileNo)) {
+
+    function togglepswrd() {
+        setPswrd(!pswrd)
+
     }
-};
+    function toggleTab(id: number) {
+        setTab(id)
+    }
 
+    const notify = () => {
+        toast.success('✔ Wow so easy!')
 
-  function togglepswrd() {
-      setPswrd(!pswrd)
-
-  }
-  function toggleTab(id: number) {
-    setTab(id)
-}
-
-    const notify = () =>
-    {
-        toast.success('✔ Wow so easy!') 
-           
     }
 
 
 
-  console.log("this is the value of pswrd", pswrd);
+    console.log("this is the value of pswrd", pswrd);
 
-  return (
-    <div className='base-container'>
-      <div className='container'>
-          <div className='left-rectangle'>
-              <img src={require("../../asset/Image/logo.png")} alt="" className='logoimg'/>
-              <img src={require("../../asset/Image/paalogo.png")} alt="" className='paalogo'/>
-              <div className='text'>Project & Manage every password in your business</div>
-          </div>
-          <div className='smalline'> </div>
-          <div className='signup-right-rectangle'>
-              <form className='form'onSubmit={signUpHandler}>
-                  <div className='sup-heading'>SIGN UP</div>
-                  <div className='heading2'>
-                    
-                       <div className='hd1'><Link to='/' className='link'>SIGN IN</Link></div>
-                  {/* <div className='shd2'>SIGN UP</div> */}
-                  <div className={tab == 1 ? 'underline' : ''} onClick={() => toggleTab(1)}>
+    return (
+        <div className='base-container'>
+            <div className='container'>
+                <div className='left-rectangle'>
+                    <img src={require("../../asset/Image/logo.png")} alt="" className='logoimg' />
+                    <img src={require("../../asset/Image/paalogo.png")} alt="" className='paalogo' />
+                    <div className='text'>Project & Manage every password in your business</div>
+                </div>
+                <div className='smalline'> </div>
+                <div className='signup-right-rectangle'>
+                    <form className='form' onSubmit={signUpHandler}>
+                        <div className='sup-heading'>SIGN UP</div>
+                        <div className='heading2'>
+
+                            <div className='hd1'><Link to='/' className='link'>SIGN IN</Link></div>
+                            {/* <div className='shd2'>SIGN UP</div> */}
+                            <div className={tab == 1 ? 'underline' : ''} onClick={() => toggleTab(1)}>
                                 <Link to='/' className='link'>SIGN UP</Link>
-                            {/* <div className='hd1'>SIGN IN</div> */}
+                                {/* <div className='hd1'>SIGN IN</div> */}
+                            </div>
+                            {/* <div className='underline2'></div> */}
+
                         </div>
-                  {/* <div className='underline2'></div> */}
-               
-                      </div>
-                  <div className='box'><input type="text" name= 'mobileNo' placeholder='Enter Mobile Number' className='input'/></div>
-                  <div className='box1'><input type="password" name="mpin" placeholder='Enter 4 digit MPin' className='input'/></div>
-                  <div className='psswrd1'>
-                 
-                      {
-                          pswrd?
-                          <>
-                          <input type="password" placeholder='Re-Enter Enter 4 digit MPin' className='input' name="confirmMPin"/>
-                          <img src={require("../../asset/Image/hide-icon.jpg")} alt="" className='hide-eye' onClick={togglepswrd}/>
-                          </>
-                          :
-                          <>
-                          <input type="text" placeholder='Re-Enter Enter 4 digit MPin' className='input' name="confirmMPin"/>
-                          <img src={require("../../asset/Image/eye_on.png")} alt="" className='eye' onClick={togglepswrd}/>
-                          </>
+                        <div className='box'><input type="text" name='mobile' placeholder='Enter Mobile Number' className='input' required
+                            minLength={10}
+                            maxLength={10} /></div>
+                        <div className='box1'><input type="password" name="pin" placeholder='Enter 4 digit MPin' className='input' required
+                            minLength={4}
+                            maxLength={4} /></div>
+                        <div className='psswrd1'>
 
-                      }
-                  </div>
-                  
-                 
-                  <div className='btn'>
-                    <button className='button' >SIGN UP </button>
-                      {/* <Button value ="SIGN UP" onClick={notify}/> */}
-                  </div>
-                  
-              </form>
-          </div>
-          
+                            {
+                                pswrd ?
+                                    <>
+                                        <input type="password" placeholder='Re-Enter Enter 4 digit MPin' className='input' name="mPin" required
+                                            minLength={4}
+                                            maxLength={4} />
+                                        <img src={require("../../asset/Image/hide-icon.jpg")} alt="" className='hide-eye' onClick={togglepswrd} />
+                                    </>
+                                    :
+                                    <>
+                                        <input type="text" placeholder='Re-Enter Enter 4 digit MPin' className='input' name="mPin" required
+                                            minLength={4}
+                                            maxLength={4} />
+                                        <img src={require("../../asset/Image/eye_on.png")} alt="" className='eye' onClick={togglepswrd} />
+                                    </>
 
-      </div >
-      </div>
-  )
+                            }
+                        </div>
+
+
+                        <div className='btn'>
+                            <button className='button' >SIGN UP </button>
+                            {/* <Button value ="SIGN UP" onClick={notify}/> */}
+                        </div>
+
+                    </form>
+                </div>
+
+
+            </div >
+        </div>
+    )
 }
 
 export default Signup
