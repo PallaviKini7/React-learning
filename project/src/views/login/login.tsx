@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import '../login/login.css'
 import Button from '../../component/button/button'
 import { Link, useNavigate } from 'react-router-dom'
@@ -6,9 +6,24 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function Login() {
-    const [pswrd, setPswrd] = useState(true)
+
+
     const navigate = useNavigate();
 
+  useEffect(() => {
+
+    const auth = localStorage.getItem("auth")
+
+    if (auth != "true") {
+
+      navigate("/")
+
+    }
+
+  },[])
+
+    const [pswrd, setPswrd] = useState(true)
+   
     const submitHandler = (e: any) => {
         e.preventDefault();
 
@@ -41,6 +56,7 @@ function Login() {
         setPswrd(!pswrd)
 
     }
+
     function toggleTab(id: number) {
         setTab(id)
     }

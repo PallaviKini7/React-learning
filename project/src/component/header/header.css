@@ -35,7 +35,7 @@
   .passManager {
     display: flex;
     flex-direction: row;
-    gap: 21px;
+    gap: 40px;
   }
   
   .profileMobile {

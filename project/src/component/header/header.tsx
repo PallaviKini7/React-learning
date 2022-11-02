@@ -3,10 +3,14 @@ import '../header/header.css'
 import { Link, useNavigate } from 'react-router-dom'
 
 const Header = () => {
+  // const navigate = useNavigate()
   const navigate = useNavigate()
-  function navigateScreen()
-  {
-    navigate('/')
+
+  const logoutFunc = () => {
+
+    localStorage.setItem("auth","false")
+
+      navigate("/")
 
   }
   return (
@@ -28,7 +32,7 @@ const Header = () => {
                 <p>Change  Password</p>
                 <img src={require("../../asset/Image/ic_pass.png")} alt="" />
                 </div>
-                <div className="sign-out" onClick={navigateScreen}>
+                <div className="sign-out" onClick={logoutFunc}>
                   <p>Sign Out</p>
                   <img src={require("../../asset/Image/712391-200.png")} alt="" />
                 </div>
